@@ -33,7 +33,17 @@ class MainActivity : AppCompatActivity() {
 
           // need to get value in case we are not using Live data
             binding.resultTextViewWold.text = viewModel.getTotal().toString()
-
         }
+
+
+
+        binding.counterButton.setOnClickListener {
+            viewModel.triggerCounter()
+        }
+
+        viewModel._newCounterValue.observe(this, Observer {
+            binding.counterTv.text = it.toString()
+        })
+
     }
 }
